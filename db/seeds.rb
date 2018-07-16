@@ -27,6 +27,8 @@ page = 1
     :serving_suggestions => wine['result'][0]['serving_suggestions'],
     :tasting_note => wine['result'][0]['tasting_note'],
     :image_thumb_url => wine['result'][0]['image_thumb_url'],
-    :image_url => wine['result'][0]['image_url']
+    :image_url => wine['result'][0]['image_url'],
+    :varietal => wine['result'][0]['varietal'],
+    :style => wine['result'][0]['style']
   )
 end
