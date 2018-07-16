@@ -8,7 +8,6 @@ class Api::V1::WinelistWinesController < ApplicationController
     winelist = Winelist.find(winelist_wine_params[:winelist_id])
    	wine = winelist.wines.create(
       name: winelist_wine_params[:wine][:name],
-      type: winelist_wine_params[:wine][:type]
    		description: winelist_wine_params[:wine][:tasting_notes],
    		image: winelist_wine_params[:wine][:image_path],
       region: winelist_wine_params[:wine][:region],
@@ -26,6 +25,6 @@ class Api::V1::WinelistWinesController < ApplicationController
   private
 
 	def winelist_wine_params
-    params.require(:winelist_wine).permit(:wine_id, :winelist_id, wine: [:name, :type, :tasting_notes, :image_path, :region, :grape])
+    params.require(:winelist_wine).permit(:wine_id, :winelist_id, wine: [:name, :tasting_notes, :image_path, :region, :grape])
 	end
 end

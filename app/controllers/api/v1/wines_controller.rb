@@ -1,6 +1,6 @@
 class Api::V1::WinesController < ApplicationController
   def index
-    wines = Wines.all
+    wines = Wine.all
     render json: wines
   end
 
@@ -17,6 +17,6 @@ class Api::V1::WinesController < ApplicationController
   private
 
   def wine_params
-  	params.require(:wine).permit(:name, :type, :description, :image, :region, :grape)
+  	params.require(:wine).permit(:name, :description, :image, :region, :grape)
   end
 end
