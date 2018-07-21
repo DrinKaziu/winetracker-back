@@ -8,10 +8,15 @@ class Api::V1::WinelistWinesController < ApplicationController
     winelist = Winelist.find(winelist_wine_params[:winelist_id])
    	wine = winelist.wines.create(
       name: winelist_wine_params[:wine][:name],
-   		description: winelist_wine_params[:wine][:tasting_notes],
-   		image: winelist_wine_params[:wine][:image_path],
-      region: winelist_wine_params[:wine][:region],
-      grape: winelist_wine_params[:wine][:grape]
+   		primary_category: winelist_wine_params[:wine][:primary_category],
+   		origin: winelist_wine_params[:wine][:origin],
+      sugar_content: winelist_wine_params[:wine][:sugar_content],
+      producer_name: winelist_wine_params[:wine][:producer_name],
+      serving_suggestions: winelist_wine_params[:wine][:serving_suggestions],
+      tasting_note: winelist_wine_params[:wine][:tasting_note],
+      image: winelist_wine_params[:wine][:image],
+      varietal: winelist_wine_params[:wine][:varietal],
+      style: winelist_wine_params[:wine][:style]
     )
    	render json: winelist
   end
@@ -25,6 +30,6 @@ class Api::V1::WinelistWinesController < ApplicationController
   private
 
 	def winelist_wine_params
-    params.require(:winelist_wine).permit(:wine_id, :winelist_id, wine: [:name, :tasting_notes, :image_path, :region, :grape])
+    params.require(:winelist_wine).permit(:wine_id, :winelist_id, wine: [:name, :primary_category, :origin, :sugar_content, :producer_name, :serving_suggestions, :tasting_note, :image, :varietal, :style])
 	end
 end
